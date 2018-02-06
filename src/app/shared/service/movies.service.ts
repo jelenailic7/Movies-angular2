@@ -1,30 +1,48 @@
 import { Injectable } from '@angular/core';
-import { movieList } from '../example/example';
 import { Movie } from '../models/movie';
 import { Observable, Observer } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class MoviesService {
 
-private movieList: Movie [];
+private movies: Movie []=[];
 
-  constructor() {
-    this.movieList = movieList.map(movie => {
-      return new Movie(movie);
-      });
+public _url = 'http://localhost:8000/api/movies';
+
+  constructor(private http: HttpClient) {
+
    }
 
  public getMovies()
   {
-      return new Observable((o: Observer<any>)=> {
-       o.next(movieList);
-       return o.complete();
+    
+      return new Observable((o: Observer<any>) => {
+       this.http.get(this._url)
+          .subscribe((movies: any[]) => {
+            movies.forEach(movie => {
+              this.movies.push (new Movie (
+                movie.id,
+                movie.name,
+                movie.director,
+                movie.image_url,
+                movie.duration,
+                movie.release_date,
+                movie.genres)
+            )});
+            o.next(this.movies);
+            o.complete();
+          });
+    
       });
+
   }
 
   public search(term): Observable<Movie[]> {
   
-  const foundMovies = this.movieList.filter((movie: Movie) => {
+  const foundMovies = this.movies.filter((movie: Movie) => {
     return movie.name.toLowerCase().includes(term.toLowerCase());
    });
    if(foundMovies.length === 0) {

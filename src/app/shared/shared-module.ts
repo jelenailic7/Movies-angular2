@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MoviesService } from './service/movies.service';
 import { MovieRowComponent } from './movie-row/movie-row.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -11,7 +12,8 @@ import { MovieRowComponent } from './movie-row/movie-row.component';
         MovieRowComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        HttpClientModule
     ],
     providers: [ MoviesService ],
     exports: [ 

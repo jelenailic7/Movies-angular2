@@ -1,10 +1,10 @@
   <div  class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{ movieRow.imageUrl }}" alt="Card image cap">
+  <img class="card-img-top" src="{{ movieRow.image_url }}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{ movieRow.name }}</h5>
     <p class="card-text">{{ movieRow.director }}</p>
     <p class="card-text">{{ movieRow.duration }}</p>
-    <p class="card-text">{{ movieRow.releaseDate }}</p>
+    <p class="card-text">{{ movieRow.release_date }}</p>
     <p class="card-text">{{ movieRow.genres }}</p>
     <button (click)="select(true)" class="btn btn-primary" [disabled]="selected">Select</button>
   </div>

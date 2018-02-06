@@ -1,21 +1,21 @@
 export class Movie {
-
     public id: number;
     public name: string;
     public director: string;
-    public imageUrl: string;
+    public image_url: string;
     public duration: number;
-    public releaseDate: string;
-    public genres: string[];
+    public release_date: Date;
+    public genres: any[];
 
-constructor(movie) {
-    this.id = movie.id;
-    this.name = movie.name;
-    this.director = movie.director;
-    this.imageUrl = movie.imageUrl;
-    this.duration = movie.duration;
-    this.releaseDate = movie.releaseDate;
-    this.genres = movie.genres;
-}
+    constructor(id? , name?, director?, image_url?, duration?, release_date?, genres?) {
+      this.id = id;
+      this.name = name;
+      this.director = director;
+      this.image_url = image_url;
+      this.duration = duration;
+      this.release_date = release_date;
+      this.genres = genres;
+    }
+  }
 
-}
+
