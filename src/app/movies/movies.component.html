@@ -3,15 +3,14 @@
     <button (click)="deselectAll()"  (click)="selectedAll = false; selectedAny = false" [disabled]="!selectedAll && !selectedAny" class="btn btn-primary" >Deselect all</button>
     <button  class="btn btn-primary" (click)="setOrder('name')"  [class.active]="order === 'name'">Sort by Name asc</button>
     <button  class="btn btn-primary"  (click)="setOrder('duration')" [class.active]="order === 'duration'">Sort by Duration asc</button>
-
     <p>Trenutno je selektovano: {{ counter }} filmova</p>
-   <div class="card" style="width: 18rem;" *ngFor="let movie of movies | orderBy: order: reverse | paginate: { itemsPerPage: 5, currentPage: p }" 
-   (onSelect)="onSelect($event)" 
-   [movieRow]="movie" 
+   <div class="card" style="width: 18rem;" *ngFor="let movie of movies | orderBy: order: reverse | paginate: { itemsPerPage: 5, currentPage: p }" >
+  <app-movie-row (onSelect)="onSelect($event)" 
+   [movie]="movie" 
    [selectedAll] = "selectedAll"
-   [selectedAny]="selectedAny">
+   [selectedAny]="selectedAny"> </app-movie-row>
    </div>
    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
-
+<router-outlet></router-outlet>

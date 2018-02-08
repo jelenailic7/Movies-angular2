@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
 import { SearchPageComponent } from './search/search-page/search-page.component';
+import { MovieFormComponent } from './movies/movie-form/movie-form.component';
 
 
 const appRoutes: Routes = [
@@ -12,6 +13,9 @@ const appRoutes: Routes = [
 
     { path:'movies',
       component: MoviesComponent },
+
+    { path:'add',
+      component: MovieFormComponent },
     
     { path:'search/:term',
     component: SearchPageComponent }
@@ -20,7 +24,7 @@ const appRoutes: Routes = [
 @NgModule({
     imports: [
       RouterModule.forRoot(
-        appRoutes
+        appRoutes, { useHash: false }
       )
     ],
     exports: [

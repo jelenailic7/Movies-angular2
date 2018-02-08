@@ -1,17 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter,OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Movie } from '../models/movie';
+import { MoviesService } from '../service/movies.service';
 
 @Component({
-  selector: '[movieRow]',
+  selector: 'app-movie-row',
   templateUrl: './movie-row.component.html'
 })
-export class MovieRowComponent implements OnInit {
+export class MovieRowComponent implements OnInit, OnChanges {
 
-@Input() movieRow: Movie;
+@Input() movie: Movie;
 @Output() onSelect = new EventEmitter<boolean>();
-public selected = false;
 @Input() selectedAll: boolean;
 @Input() selectedAny:boolean;
+
+private selected = false;
+private movies:Movie[]=[];
 
   constructor() { }
 

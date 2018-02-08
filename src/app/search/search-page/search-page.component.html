@@ -1,6 +1,6 @@
 <div class= "container">
-    <p>Result of search</p>
-    <div class="card" style="width: 18rem;" *ngFor = "let movie of movies" [movieRow]="movie">
-  
+    <p>Search results</p>
+    <div class="card" style="width: 18rem;" >
+     <app-movie-row *ngFor = "let movie of movies" [movie]="movie"></app-movie-row>
     </div>
   </div>

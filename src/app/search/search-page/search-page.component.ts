@@ -6,29 +6,31 @@ import { Router } from '@angular/router/';
 
 @Component({
   selector: 'app-search-page',
-  templateUrl: './search-page.component.html'
+  templateUrl: './search-page.component.html',
+  providers: [MoviesService]
+
 })
 export class SearchPageComponent  {
 
- private movies=[];
- 
+ private movies:Movie[];
+ private term;
 
-    constructor(private route: ActivatedRoute, private router: Router, private moviesService: MoviesService) {
-
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private moviesService: MoviesService) {
     }
 
 ngOnInit() {
     this.route.params.subscribe((params) => {
-        this.moviesService.search(params["term"]).subscribe(data => {
-            this.movies=data;
-        },
-        (term) => {
-            alert('There are no movies with searched term: ' + term);
-
-            this.router.navigate(['/movies']);
-
-        });
-    });
-}
+        this.moviesService.search(params.term)
+        .subscribe(data => {
+            this.movies = data;
+            this.term = params.term;
+        });  
+      }); 
+    }
+                    
+       
+    
     
 }

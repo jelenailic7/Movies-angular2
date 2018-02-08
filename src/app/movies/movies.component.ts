@@ -2,14 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../shared/models/movie';
 import { MoviesService } from '../shared/service/movies.service';
 import { MovieRowComponent } from '../shared/movie-row/movie-row.component';
+import { Router } from '@angular/router';
+
 
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
+  providers: [MoviesService]
+
 })
 
 export class MoviesComponent implements OnInit {
+
 
 public counter = 0;
 private movies;
@@ -20,10 +25,11 @@ public selected;
 public order;
 p: number = 1;
 
-constructor(private moviesService: MoviesService) { }
+constructor(private moviesService: MoviesService,
+            private router: Router) { }
 
 ngOnInit() {
-    this.moviesService.getMovies().subscribe(data => {
+     this.moviesService.getMovies().subscribe(data => {
      this.movies = data;
     });
   }
@@ -49,6 +55,9 @@ ngOnInit() {
     }
     this.order = value;
 }
+  
+
+
 
 }
 
