@@ -4,6 +4,7 @@ import { Observable, Observer } from 'rxjs';
 import { HttpClient,HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 
 @Injectable()
@@ -13,7 +14,7 @@ private movies: Movie []=[];
 
 public _url = 'http://localhost:8000/api/movies';
 
-  constructor(private http: HttpClient, private router:Router) {
+  constructor(private http: HttpClient, private authService: AuthService) {
 
    }
  
@@ -21,7 +22,9 @@ public _url = 'http://localhost:8000/api/movies';
  public getMovies()
   {  
       return new Observable((o: Observer<any>) => {
-       this.http.get(this._url)
+       this.http.get(this._url, {
+        headers: this.authService.getRequestHeaders(),
+       })
           .subscribe((movies: any[]) => {
             movies.forEach(movie => {
               this.movies.push (new Movie (
@@ -42,7 +45,7 @@ public _url = 'http://localhost:8000/api/movies';
   public search(term) {
     return new Observable((o: Observer<any>) => {
       let params = new HttpParams().append('term',term);
-        this.http.get(this._url, {params})      
+        this.http.get(this._url, {params})           
         .subscribe((movies: any) => {
           this.movies = movies.map((movie)=>{
             return new Movie(
@@ -71,6 +74,9 @@ public _url = 'http://localhost:8000/api/movies';
        'duration': movie.duration,
        'release_date': movie.release_date,
        'genres': movie.genres
+     },
+     {
+      headers: this.authService.getRequestHeaders(),
      })
      .subscribe((m:any)=> {
        let newMovie = new Movie(m.name, m.director, m.image_url, m.duration,m.release_date, m.genres);

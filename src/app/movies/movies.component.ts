@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   providers: [MoviesService]
-
 })
 
 export class MoviesComponent implements OnInit {

@@ -25,7 +25,7 @@ ngOnInit() {
         this.moviesService.search(params.term)
         .subscribe(data => {
             this.movies = data;
-            this.term = params.term;
+       //     this.term = params.term;
         });  
       }); 
     }

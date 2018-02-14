@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MoviesService } from './service/movies.service';
 import { MovieRowComponent } from './movie-row/movie-row.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './service/auth.service';
 
 
 
@@ -15,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
         CommonModule,
         HttpClientModule
     ],
-    providers: [ MoviesService ],
+    providers: [ MoviesService, AuthService ],
     
     exports: [ 
         MovieRowComponent
