@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Observer } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -9,7 +10,7 @@ export class AuthService {
 
   public isAuthenticated: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router:Router) {
     this.isAuthenticated = !!window.localStorage.getItem('loginToken');
    }
    
@@ -37,6 +38,12 @@ export class AuthService {
      public getRequestHeaders()
   {
   	return new HttpHeaders().set('Authorization', 'Bearer ' + window.localStorage.getItem('loginToken'));
+  }
+  public logout()
+  {
+    window.localStorage.removeItem('loginToken');
+    this.isAuthenticated = false;
+    this.router.navigate(['/login']);
   }
    
 
