@@ -20,7 +20,7 @@ export class SearchPageComponent  {
                 private moviesService: MoviesService) {
     }
 
-ngOnInit() {
+public ngOnInit() {
     this.route.params.subscribe((params) => {
         this.moviesService.search(params.term)
         .subscribe(data => {

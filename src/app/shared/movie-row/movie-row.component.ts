@@ -23,13 +23,12 @@ public select(agreed:boolean){
     this.selected = true;
 }
 
-  ngOnInit() {
+ public ngOnInit() {
   }
 
-  ngOnChanges() {
+ public ngOnChanges() {
      if (this.selectedAny === false) { 
           this.selected = this.selectedAll; 
     }
   }
 }
-//ovako treba

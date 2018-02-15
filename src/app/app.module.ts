@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation'
+
 
 
 
@@ -14,6 +16,7 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MovieFormComponent } from './movies/movie-form/movie-form.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { LoginComponent } from './login/login.component';
     LayoutComponent,
     MoviesComponent,
     MovieFormComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
 
 
   ],
@@ -32,7 +36,8 @@ import { LoginComponent } from './login/login.component';
     SearchModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

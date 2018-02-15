@@ -14,7 +14,7 @@ export class LoginComponent  {
 
   
 
-  login(email,password) 
+public login(email,password) 
   {
     this.authService.login(email,password)
     .subscribe(()=>{

@@ -24,8 +24,7 @@ public _url = 'http://localhost:8000/api/movies';
       return new Observable((o: Observer<any>) => {
        this.http.get(this._url, {
         headers: this.authService.getRequestHeaders(),
-       })
-          .subscribe((movies: any[]) => {
+       }).subscribe((movies: any[]) => {
             movies.forEach(movie => {
               this.movies.push (new Movie (
                 movie.id,

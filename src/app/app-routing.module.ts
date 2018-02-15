@@ -4,6 +4,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { SearchPageComponent } from './search/search-page/search-page.component';
 import { MovieFormComponent } from './movies/movie-form/movie-form.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const appRoutes: Routes = [
@@ -23,6 +24,9 @@ const appRoutes: Routes = [
 
     { path: 'login',
     component: LoginComponent },
+
+    { path: 'register',
+    component: RegisterComponent },
     
 ];
 

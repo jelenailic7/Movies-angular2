@@ -3,6 +3,7 @@ import { Movie } from '../shared/models/movie';
 import { MoviesService } from '../shared/service/movies.service';
 import { MovieRowComponent } from '../shared/movie-row/movie-row.component';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -30,6 +31,10 @@ constructor(private moviesService: MoviesService,
 ngOnInit() {
      this.moviesService.getMovies().subscribe(data => {
      this.movies = data;
+    },
+    (err: HttpErrorResponse) => {
+      alert(`Backend returned code ${err.status} with message: ${err.error}`);
+    
     });
   }
 
