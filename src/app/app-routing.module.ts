@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MovieResolver } from './resolvers/movie.resolver';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
+import { GuestGuard } from './shared/guards/guest.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 
@@ -17,6 +19,7 @@ const appRoutes: Routes = [
    },
 
     { path:'movies',
+    canActivate: [AuthGuard],
       component: MoviesComponent },
 
     { path:'add',
@@ -26,6 +29,7 @@ const appRoutes: Routes = [
     component: SearchPageComponent },
 
     { path: 'login',
+    canActivate: [GuestGuard],
     component: LoginComponent },
 
     { path: 'register',

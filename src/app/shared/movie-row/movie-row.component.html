@@ -7,7 +7,7 @@
       <p class="card-text">{{ movie.release_date }}</p>
       <p class="card-text">{{ movie.genres }}</p>
       <div *ngIf="!selected && !isSelected">
-      <button (click)="select(true)" (click)="selected=true" class="btn btn-primary">Select</button>
+      <button (click)="select(true)" (click)="selected=true" class="btn btn-primary" >Select</button>
       </div>
       <div *ngIf="isSelected">
         <button class="btn btn-primary" (click)="goBackToMovies()" >Go back</button>

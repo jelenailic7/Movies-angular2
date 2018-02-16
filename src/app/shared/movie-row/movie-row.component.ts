@@ -15,10 +15,10 @@ export class MovieRowComponent implements OnInit, OnChanges {
 @Input() selectedAll: boolean;
 @Input() selectedAny:boolean;
 @Input() isSelected: boolean;
-@Input() selected: boolean;
+
 private movies:Movie[]=[];
 
-//public selected = false;
+public selected = false;
   constructor(private router:Router) {
 
    }

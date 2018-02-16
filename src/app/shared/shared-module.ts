@@ -9,6 +9,8 @@ import { MovieResolver } from '../resolvers/movie.resolver';
 import { MovieRowComponent } from './movie-row/movie-row.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { GuestGuard } from './guards/guest.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -28,7 +30,7 @@ import { HttpModule } from '@angular/http';
 
     
     ],
-    providers: [ MoviesService, AuthService, MovieResolver ],
+    providers: [ MoviesService, AuthService, MovieResolver,GuestGuard,AuthGuard ],
     
     exports: [ 
         MovieRowComponent
