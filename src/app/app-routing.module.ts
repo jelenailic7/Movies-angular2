@@ -5,6 +5,9 @@ import { SearchPageComponent } from './search/search-page/search-page.component'
 import { MovieFormComponent } from './movies/movie-form/movie-form.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MovieResolver } from './resolvers/movie.resolver';
+import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
+
 
 
 const appRoutes: Routes = [
@@ -19,7 +22,7 @@ const appRoutes: Routes = [
     { path:'add',
       component: MovieFormComponent },
     
-    { path:'search/:term',
+    { path:'movies/search/:term',
     component: SearchPageComponent },
 
     { path: 'login',
@@ -27,6 +30,13 @@ const appRoutes: Routes = [
 
     { path: 'register',
     component: RegisterComponent },
+    
+    { path: 'movies/:id',
+    component: MovieDetailsComponent,
+    resolve: {
+      movie: MovieResolver
+      } 
+    },
     
 ];
 

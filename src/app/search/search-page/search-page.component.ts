@@ -7,7 +7,6 @@ import { Router } from '@angular/router/';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  providers: [MoviesService]
 
 })
 export class SearchPageComponent  {

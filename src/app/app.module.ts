@@ -17,6 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { MovieFormComponent } from './movies/movie-form/movie-form.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { RegisterComponent } from './register/register.component';
     MoviesComponent,
     MovieFormComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MovieDetailsComponent
+    
 
 
   ],

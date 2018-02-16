@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 import { Movie } from '../models/movie';
 import { MoviesService } from '../service/movies.service';
 
+
 @Component({
   selector: 'app-movie-row',
   templateUrl: './movie-row.component.html'
@@ -31,4 +32,5 @@ public select(agreed:boolean){
           this.selected = this.selectedAll; 
     }
   }
+
 }

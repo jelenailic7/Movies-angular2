@@ -14,6 +14,6 @@ private searchTerm;
     {}
 
    public searchMovie(){
-      this.router.navigate(['/search', this.searchTerm]);
+      this.router.navigate(['/movies/search', this.searchTerm]);
     }
 }

@@ -12,7 +12,7 @@ export class MoviesService {
 
 private movies: Movie []=[];
 
-public _url = 'http://localhost:8000/api/movies';
+public _url = 'http://localhost:8000/api/movies/';
 
   constructor(private http: HttpClient, private authService: AuthService) {
 
@@ -44,8 +44,9 @@ public _url = 'http://localhost:8000/api/movies';
   public search(term) {
     return new Observable((o: Observer<any>) => {
       let params = new HttpParams().append('term',term);
-        this.http.get(this._url, {params})           
-        .subscribe((movies: any) => {
+        this.http.get(this._url, {params,
+         headers: this.authService.getRequestHeaders(),
+        }).subscribe((movies: any) => {
           this.movies = movies.map((movie)=>{
             return new Movie(
               movie.id,
@@ -78,11 +79,24 @@ public _url = 'http://localhost:8000/api/movies';
       headers: this.authService.getRequestHeaders(),
      })
      .subscribe((m:any)=> {
-       let newMovie = new Movie(m.name, m.director, m.image_url, m.duration,m.release_date, m.genres);
+       let newMovie = new Movie(movie.id,m.name, m.director, m.image_url, m.duration,m.release_date, m.genres);
        this.movies.push(newMovie);
        o.next(newMovie);
        return o.complete();
      });
+   });
+ }
+ public getMovieById(id){
+   return new Observable((o: Observer<any>) => {
+     this.http.get(this._url + id,
+      {
+        headers: this.authService.getRequestHeaders(),
+      }).subscribe((movie:any) => {
+        let newMovie = new Movie(movie.id,movie.name, movie.director,
+          movie.image_url,movie.duration,movie.release_date,movie.genres);
+        o.next(newMovie);
+          return o.complete();
+      });
    });
  }
   
