@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Movie } from '../models/movie';
 import { MoviesService } from '../service/movies.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,15 +14,20 @@ export class MovieRowComponent implements OnInit, OnChanges {
 @Output() onSelect = new EventEmitter<boolean>();
 @Input() selectedAll: boolean;
 @Input() selectedAny:boolean;
-
-private selected = false;
+@Input() isSelected: boolean;
+@Input() selected: boolean;
 private movies:Movie[]=[];
 
-  constructor() { }
+//public selected = false;
+  constructor(private router:Router) {
+
+   }
 
 public select(agreed:boolean){ 
   this.onSelect.emit(agreed);
     this.selected = true;
+    this.isSelected = false;
+   
 }
 
  public ngOnInit() {
@@ -29,8 +35,14 @@ public select(agreed:boolean){
 
  public ngOnChanges() {
      if (this.selectedAny === false) { 
-          this.selected = this.selectedAll; 
+          this.selected = this.selectedAll;
+ 
+     
     }
+  }
+  public goBackToMovies(){
+    this.router.navigate(['/movies']);
+    this.selected=false;
   }
 
 }

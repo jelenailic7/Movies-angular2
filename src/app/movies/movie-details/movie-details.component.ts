@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
 
     private movie: Movie;
+    public isSelected: boolean;
 
     constructor(private route: ActivatedRoute,
                 private moviesService: MoviesService,
@@ -24,8 +25,9 @@ export class MovieDetailsComponent implements OnInit {
             .subscribe((data: {movie: Movie})=> {
                 this.movie = data.movie;
             });
+            this.isSelected = true;
+        
+            
     }
-    public goToMovies(){
-        this.router.navigate(['/movies']);
-      }
+ 
 }
